@@ -1,0 +1,1 @@
+A Prosthetic Tool that shoots loaded coin bundles. Costs sen and Spirit Emblems to use. While it lacks a shuriken's range, it inflicts far more damage, as the coins hit multiple times. The amount of coins thrown increases depending on how much money one possesses. Being rich makes the blast incredibly strong, but an empty purse will shoot 

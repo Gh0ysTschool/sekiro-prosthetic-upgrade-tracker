@@ -1,0 +1,3 @@
+Lady Butterfly's kunai, fitted into the shuriken wheel. Costs Spirit Emblems to use.
+
+Creates a special sound when thrown, which causes phantom butterflies to follow the path of the kunai. The phantom butterflies chase after enemies and inflict damage even when guarded.

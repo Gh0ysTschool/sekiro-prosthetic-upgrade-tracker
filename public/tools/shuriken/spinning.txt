@@ -1,0 +1,5 @@
+An enhanced Shuriken that can be empowered with rotational energy. Costs Spirit Emblems to use.
+
+Damage an enemy's Vitality and Posture, and does huge damage to jumping enemies. Taking a moment to further bend the spring and build rotational energy will cause the blade to rotate after landing, damaging the enemy multiple times on hit.
+
+Similar to a spinning top, but with blades.

@@ -1,0 +1,5 @@
+A Firecracker upgraded with a spring mechanism. Costs Spirit Emblems to use.
+
+Unleashes a loud explosion and bright flash which causes foes to recoil and inflicts Posture damage on beast-type enemies.
+
+Charging up the spring mechanism adds rotational energy when spreading the Firecrackers, affecting enemies in all directions.

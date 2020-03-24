@@ -1,0 +1,3 @@
+An enhanced shuriken that pierces enemies with its sharp blades. Costs Spirit Emblems to use.
+
+These piercing blades retain momentum after landing, and will damage an enemy's Vitality and Posture, even if guarded. Taking a moment to further bend the spring, and build rotational energy will cause the blade to rotate after landing, damaging the enemy multiple times on hit.

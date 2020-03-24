@@ -1,0 +1,5 @@
+A further improved Sabimaru with a finely sharpened blade. Costs Spirit Emblems to use.
+
+Repeated attacks with the newly sharpened edge of the blade will damage an enemy's Vitality and Posture, even through their guard.
+
+The blue rust poison on Sabimaru's blade eats its way into enemies and applies Poison status.

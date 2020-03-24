@@ -1,0 +1,7 @@
+A Flame Barrel fitted with a gunpowder-loaded mechanism.
+
+Costs Spirit Emblems to use.
+
+Deals damage to enemies with gouts of fire, inflicting Burn status abnormality.
+
+The spring mechanism can also be charged to release a massive blast of flames and hot air, sending opponents flying.

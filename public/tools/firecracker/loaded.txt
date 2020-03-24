@@ -1,0 +1,5 @@
+A Prosthetic Tool fitted with Robert's firecrackers. Costs Spirit Emblems.
+
+Unleashes an explosive flash that briefly blinds foes and inflicts Posture damage on beast-type enemies. Has a wide, frontward field of effect that can impact multiple foes at once.
+
+Suitable for temporarily immobilizing enemies and particularly good for scaring beasts.

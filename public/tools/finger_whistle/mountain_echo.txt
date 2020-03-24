@@ -1,0 +1,5 @@
+A finger whistle that can create an echo effect. Costs Spirit Emblems to use.
+
+Its sound will grab an enemy's attention and draw them to the whistle's location. By locking on to a target, only the targeted enemy will hear the whistle.
+
+Taking a deep breath before performing a whistle allows for the sound to be delayed.

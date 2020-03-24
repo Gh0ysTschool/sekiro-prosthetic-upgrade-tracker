@@ -1,0 +1,5 @@
+A Prosthetic Tool made from a loaded Flame Barrel. Costs Spirit Emblems to use.
+
+Deals fire damage to enemies via a short-range blast of fire while also inflicting Burn status.
+
+It is difficult to control the rage of those with "Red Eyes" through the power of man alone. They do, however, fear the flame above all else. This tool has the power to make them tremble.

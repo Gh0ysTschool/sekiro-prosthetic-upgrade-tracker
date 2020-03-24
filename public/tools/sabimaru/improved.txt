@@ -1,0 +1,5 @@
+An improved Sabimaru with a special mechanism for unleashing the blade. Costs Spirit Emblems to use.
+
+Due to the revised mechanism, one can fluidly swap between two separate sets of attacks as desired.
+
+Has a blue rust poison applied to the blade that eats into enemies' defense and inlicts "Poison" status abnormality.

@@ -1,0 +1,7 @@
+An upgraded Firecracker that uses a purple, smoke-emitting compound gunpowder.
+
+Costs Spirit Emblems to use. The tweaked compound gunpowder is known as " Purple Fume Spark". 
+
+The addition of fatty wax lumps delays the explosion slightly.
+
+Enemies blinded by the blast take slightly more Vitality and Posture damage for a brief period of time.

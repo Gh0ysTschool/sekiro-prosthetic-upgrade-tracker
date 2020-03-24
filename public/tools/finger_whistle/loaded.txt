@@ -1,0 +1,6 @@
+A Prosthetic Tool created by fitting a slender finger to the prosthetic. Costs Spirit Emblems to use.
+
+Its sound will grab an enemy's attention and draw them to the whistle's location. By locking on to a target, only the targeted enemy will hear the whistle.
+
+The sound of the finger whistle enrages beasts, making them unable to distinguish friend from foe.
+

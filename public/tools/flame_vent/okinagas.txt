@@ -1,0 +1,5 @@
+A barrel containing smoldering resin that acts as an explosive catalyst. Costs Spirit Emblems to use.
+
+Emits a short-range flame blast. Continuous fire damage will inflict the Burn status.
+
+It is able to maintain a continuous stream of flames due to the smoldering resin inside of the tube mechanism.
