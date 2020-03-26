@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	let selected_tool_index = 0;
+	let selected_tool_index = 2;
 	export let tools;
 	export let materials;
 	export let thumbnails = [];
@@ -337,7 +337,7 @@
 			<div class="tool-cube "></div>
 		</div>
 	</div>
-	<div class="tool">
+	<div class="tool-description">
 		{#if (typeof(requirements[selected_tool_index]) != "undefined"
 		&& requirements[selected_tool_index]!==null)
 		&& (typeof(material_mapping) != "undefined"
@@ -445,6 +445,45 @@
 		margin: 0px;
 		padding: 0px;
 	}
+	.tool-description {
+		display : flex;
+		flex-direction: row;
+		min-height : 300px;
+		max-height : 300px;
+		max-width : 600px;
+		min-width : 600px;
+		overflow: hidden;
+		border-radius:20px;
+		margin:20px;
+		background: linear-gradient(to right, rgb(143, 117, 86), rgb(143, 117, 86) 105px, rgb(150, 127, 98) 105px, rgb(150, 127, 98) 600px );
+		padding: 15px;
+		padding-top: 50px;
+
+	}
+	.tool-description img {
+		min-height : 80px;
+		min-width : 80px;
+		max-height : 80px;
+		max-width : 80px;
+		background : grey;
+		border-radius : 5px;
+		margin-right : 15px;
+	}
+	.tool-description p {
+		padding-left: 5px;
+		padding-right: 5px;
+		text-align: left;
+		max-width: 480px;
+		margin: 0px;
+		margin-right: 15px;
+		background: repeating-linear-gradient(
+			 rgb(150, 127, 98), rgb(150, 127, 98) 2px, grey 2px, grey 3px, rgba(128, 128, 128, 0.5) 3px, rgba(128, 128, 128, 0.5) 19px, grey 19px, grey 20px, rgb(150, 127, 98) 20px, rgb(150, 127, 98) 22px);
+	}
+
+	.tool-description div {
+		margin: 0px;
+		padding: 0px;
+	}
 
 	.material {
 		display : flex;
@@ -453,7 +492,7 @@
 		min-width : 50px;
 		overflow: hidden;
 		margin: 5px;
-		background-color: tan;
+		background-color: transparent;
 		padding: 15px;
 		border-radius: 5px;
 
@@ -569,12 +608,12 @@
 	 
 	}
 	div.tree {
-		margin:20px;
 		min-width: 1300px;
 		min-height: 800px;
 		max-width: 1300px;
 		max-height: 800px;
 		border-radius:20px;
+		margin:20px;
 		background-image: repeating-linear-gradient(90deg, rgb(143, 117, 86), rgb(143, 117, 86) 100px,rgb(150, 127, 98) 100px, rgb(150, 127, 98) 200px);
 	}
     .cross-section {
