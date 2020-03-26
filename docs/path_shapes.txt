@@ -1,0 +1,105 @@
+using multiple clippath masks with inline svgs
+
+This is possible if you use clip-path with an SVG-defined <clipPath>
+
+.clip-svg {
+  clip-path: url(#myClip);
+}
+<img class="clip-svg" src="https://picsum.photos/id/1015/600/400">
+
+<svg width="0" height="0">
+  <defs>
+    <clipPath id="myClip">
+      <polygon points="400,50 400,320,140,300"/>
+      <polygon points="450,10 500,200 600,100" />
+      <polygon points="150,10 100,200 300,100" />
+    </clipPath>
+  </defs>
+</svg>
+
+
+
+ |
+----
+ |
+ clip-path: polygon(0 40, 
+				40 40, 
+				40 0, 
+				60 0, 
+				60 40, 
+				100 40, 
+				100 60, 
+				60 60, 
+				60 100, 
+				40 100, 
+				40 60,
+				0 60);
+  |
+--|
+  |
+  clip-path: polygon(0 40, 40 40, 40 0, 60 0,  60 100, 40 100, 40 60,0 60);
+
+---0
+ |
+ 
+ clip-path: polygon(0 40, 100 40, 100 60, 60 60, 60 100, 40 100, 40 60, 0 60);
+clip-path: circle(15 at 50 85)
+
+ |
+---0
+
+ clip-path: polygon(0 40, 40 40, 40 0, 60 0, 60 40, 100 40, 100 60, 0 60);
+clip-path: circle(15 at 50 85)
+
+----
+ |
+ clip-path: polygon(0 40,  
+				100 40, 
+				100 60, 
+				60 60, 
+				60 100, 
+				40 100, 
+				40 60, 
+				0 60);
+
+---0
+clip-path: polygon(0 40, 100 40, 100 60, 0 60);
+clip-path: circle(15 at 50 85)
+
+---
+ clip-path: polygon(0 40, 100 40,100 60, 0 60);
+
+---0
+  -0
+ |
+ 
+clip-path: polygon(40 70, 00 70,100 90, 60 90, 60 100, 40 100);
+clip-path: circle(15 at 80 85)
+
+                
+clip-path: polygon(0 40, 100 40,100 60, 0 60);
+clip-path: circle(15 at 50 85)
+
+
+ |
+---0
+  -0
+ |
+
+clip-path: polygon(0 40, 40 40, 40 0, 60 0, 60 40, 100 40, 100 60, 0 60);
+clip-path: circle(15 at 80 85)
+
+                
+clip-path: polygon(0 40,100 40,100 60, 0 60);
+clip-path: circle(15 at 50 85)
+
+ |
+  -0
+---0
+
+clip-path: polygon(40 0, 60 0, 60 40, 100 40, 100 60, 40 60);
+clip-path: circle(15 at 50 85)
+
+                
+clip-path: polygon(0 70,100 70,100 90, 0 90);
+clip-path: circle(15 at 80 85)
