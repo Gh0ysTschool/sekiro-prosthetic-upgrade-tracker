@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	let selected_tool_index = 2;
+	let selected_tool_index = 14;
+	let selected_material_index = 0;
 	export let tools;
 	export let materials;
 	export let thumbnails = [];
@@ -76,17 +77,24 @@
 		img_style.type = 'text/css';
 		img_style.innerHTML = ".tool-img { min-height:80px;max-width:80px;max-height:80px;min-width:80px;}";
 		document.body.appendChild(img_style);
-		let tool_indexes = [26,32,33,34,35,27,28,1 ,19,29,20,30,22,23,24,13,5 ,11,2 ,12,3,8,38,9 ,15,37,16,6 ,39,17];
+		let tool_indexes = [0,4,7,10,14,18,21,25,31,36,null,26,32,33,34,35,27,28,1 ,19,29,20,30,22,23,24,13,5 ,11,2 ,12,3,8,38,9 ,15,37,16,6 ,39,17];
 		document.querySelectorAll(".tool-cube").forEach((el,i)=>{
-			if (i==0) return;
+			if (i==10) return;
 			let img = document.createElement("img");
 			img.classList.add("tool-img"); 
-			let url = thumbnails[tool_indexes[i-1]];
+			let url = thumbnails[tool_indexes[i]];
 			img.setAttribute('src',url);
 			el.appendChild(img);
-			let t_i = tool_indexes[i-1];
+			let t_i = tool_indexes[i];
 			el.addEventListener("click",(e,el)=>{
 				selected_tool_index=t_i;
+
+			})
+		});
+		document.querySelectorAll(".material-top img").forEach((el,i)=>{
+			let t_i = i;
+			el.addEventListener("click",(e,el)=>{
+				selected_material_index=t_i;
 
 			})
 		});
@@ -214,7 +222,26 @@
 		</clipPath>  
 	</defs>
 </svg>
+<div class="row material-top">
+	{#if (typeof(material_mapping) != "undefined"&&material_mapping!==null)}
+		{#each Object.keys(material_mapping) as key, i}
+				<img src={material_mapping[key].thumbnail} alt="">
+		{/each}
+	{/if}
+</div>
 <div class="row">
+	<div class="base-upgrade-column">
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+		<div class="tool-cube "></div>
+	</div>
 	<div class="tree">	
 		<div class="row">
 			<div class="tool-cube "></div>
@@ -337,30 +364,50 @@
 			<div class="tool-cube "></div>
 		</div>
 	</div>
-	<div class="tool-description">
-		{#if (typeof(requirements[selected_tool_index]) != "undefined"
-		&& requirements[selected_tool_index]!==null)
-		&& (typeof(material_mapping) != "undefined"
-		&& material_mapping!==null)
-		&& (thumbnails.length != 0)
-		&& (descriptions.length != 0)}
-		<img src={thumbnails[selected_tool_index]} alt="">
-			<div>
-			{#each descriptions[selected_tool_index] as desc}
-				<p>{desc}</p>
-			{/each}<div class="material">
-					{#each Object.keys(requirements[selected_tool_index]) as key, j}
-						{#if (Object.values(requirements[selected_tool_index])[j] != 0)}
-							<div>
-								<img src={material_mapping[key.toLowerCase()].thumbnail} alt="">
-								<p>{Object.values(requirements[selected_tool_index])[j]}</p>
-							</div>
-						{/if}
+	<div class="description-bar">
+		<div class="tool-description">
+			{#if (typeof(requirements[selected_tool_index]) != "undefined"
+			&& requirements[selected_tool_index]!==null)
+			&& (typeof(material_mapping) != "undefined"
+			&& material_mapping!==null)
+			&& (thumbnails.length != 0)
+			&& (descriptions.length != 0)}
+				<img src={thumbnails[selected_tool_index]} alt="">
+				<div>
+					{#each descriptions[selected_tool_index] as desc}
+						<p>{desc}</p>
+					{/each}
+					<div class="material">
+						{#each Object.keys(requirements[selected_tool_index]) as key, j}
+							{#if (Object.values(requirements[selected_tool_index])[j] != 0)}
+								<div>
+									<img src={material_mapping[key.toLowerCase()].thumbnail} alt="">
+									<p>{Object.values(requirements[selected_tool_index])[j]}</p>
+								</div>
+							{/if}
+						{/each}
+					</div>
+				</div>
+			{/if}
+		</div>
+		<div style="height:30px"></div>
+		<div class="tool-description">
+			{#if (typeof(requirements[selected_tool_index]) != "undefined"
+			&& requirements[selected_tool_index]!==null)
+			&& (typeof(material_mapping) != "undefined"
+			&& material_mapping!==null)
+			&& (thumbnails.length != 0)
+			&& (descriptions.length != 0)}
+				<img src={material_thumbnails[selected_material_index]} alt="">
+				<div>
+					{#each material_descriptions[selected_material_index] as desc}
+						<p>{desc}</p>
 					{/each}
 				</div>
-			</div>
-		{/if}
+			{/if}
+		</div>
 	</div>
+	
 </div>
 <main>	
 	<ul>
@@ -445,13 +492,27 @@
 		margin: 0px;
 		padding: 0px;
 	}
+	.base-upgrade-column {
+		display : flex;
+		flex-direction: column;
+		min-height : 800px;
+		max-height : 800px;
+		max-width : 100px;
+		min-width : 100px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		border-radius:20px;
+		margin:20px;
+		background: rgb(143, 117, 86);
+	}
+
 	.tool-description {
 		display : flex;
 		flex-direction: row;
 		min-height : 300px;
 		max-height : 300px;
-		max-width : 600px;
-		min-width : 600px;
+		max-width : 400px;
+		min-width : 400px;
 		overflow: hidden;
 		border-radius:20px;
 		margin:20px;
@@ -529,7 +590,25 @@
 	}
 
 
-
+	.material-top {
+		min-height : 100px;
+		max-width : 1910px;
+		min-width : 1910px;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		margin: 20px;
+		background: rgb(143, 117, 86);
+		border-radius: 15px;
+	}
+	.material-top img {
+		min-height : 80px;
+		min-width : 80px;
+		max-height : 80px;
+		max-width : 80px;
+		background : grey;
+		border-radius : 15px;
+		margin : 10px;
+	}
 	.material_side {
 		display : flex;
 		flex-direction: column;
@@ -541,7 +620,6 @@
 		background: tan;
 		padding: 5px;
 		border-radius: 15px;
-
 	}
 	.material_side img {
 		min-height : 40px;
@@ -671,4 +749,7 @@
     .tee-dot-offset-dashed {
       clip-path: url(#tee-dot-offset-dashed );
     }
+	::-webkit-scrollbar {
+		display: none;
+	}
 </style>
