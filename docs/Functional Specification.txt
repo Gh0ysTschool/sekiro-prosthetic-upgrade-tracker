@@ -1,0 +1,43 @@
+Functional Specification
+for
+Sekiro Prosthetic Upgrade Path Tracker
+By Bradley Pudsey
+
+Overview
+PWA that displays the available grid of upgrades with the requirement 
+paths in the lefthand pane. displays the descriptions of the upgrades 
+that is currently being selected in the righthand pane. displays the 
+current material requirements for all the selected upgrades in total. 
+on leftmost side of the material cost bar, a button that enables 
+material budgets, highlighting costs in red when they exceed budget.
+button in top leftmost corner of upgrades grid hides all unaffordable 
+upgrades. grid of upgrade thumbnails that when clicked on display the 
+larger thumbnail and description on the righthand pane, flashing a 
+toastbar reminding the user that they can doubleclick to toggle the 
+purchased state of the upgrade, then suppress the toastbar notification 
+until the user has clicked on 7 more upgrades. material bar materials 
+that display material name and description on long hover as a bubble 
+over the material. when budget enabled, display button in material bar 
+that sets budget equal to required materials
+
+Scenarios
+
+speedrunner
+needs
+data for minimum executable plan of action
+desires
+efficient ux
+turse data presentation
+
+lore reader
+needs
+digestable description data
+desires
+flavorful ux
+information in central location
+robust data presentation
+
+limited budget decision maker
+needs
+data on available options given material budget
+desires
