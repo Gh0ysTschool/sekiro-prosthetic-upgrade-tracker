@@ -15,8 +15,70 @@
 		long_height : 100,
 		long_width : 100,
 		height : 100,
-		width : 60,
+		width : 40,
+
+		offset : 0,
+		t_l : {x:0,y:0},
+		b_l : {x:0,y:0},
+		t_r : {x:0,y:0},
+		b_r : {x:0,y:0},
+		l_t : {x:0,y:0},
+		r_t : {x:0,y:0},
+		l_b : {x:0,y:0},
+		r_b : {x:0,y:0},
+		i_t_l : {x:0,y:0},
+		i_b_l : {x:0,y:0},
+		i_t_r : {x:0,y:0},
+		i_b_r : {x:0,y:0},
+		t_l_l : {x:0,y:0},
+		b_l_l : {x:0,y:0},
+		t_r_l : {x:0,y:0},
+		b_r_l : {x:0,y:0},
+		c_r : 0,
+		c_x : 0,
+		c_y : 0,
+		d_1 : {x1:0,x2:0,y1:0,y2:0,},
+		d_2 : {x1:0,x2:0,y1:0,y2:0,},
+		d_3 : {x1:0,x2:0,y1:0,y2:0,},
+		d_4 : {x1:0,x2:0,y1:0,y2:0,},
+		d_5 : {x1:0,x2:0,y1:0,y2:0,},
 	}
+	svg.offset = svg.line_thickness*1.5;
+	let h_h = svg.height/2,
+		h_w = svg.width/2,
+		h_lt = svg.line_thickness/2,
+		h_inc = svg.height/5;
+
+	svg.c_r = svg.line_thickness;
+	svg.c_x = svg.width-svg.line_thickness;
+	svg.c_y = h_h;
+
+	svg.t_l = {x:0,y:h_h-h_lt};
+	svg.b_l = {x:0,y:h_h+h_lt};
+	svg.t_r = {x:svg.width,y:h_h-h_lt};
+	svg.b_r = {x:svg.width,y:h_h+h_lt};
+
+	svg.l_t = {x:h_w-h_lt,y:0};
+	svg.r_t = {x:h_w+h_lt,y:0};
+	svg.l_b = {x:h_w-h_lt,y:svg.height};
+	svg.r_b = {x:h_w+h_lt,y:svg.height};
+
+	svg.i_t_l = {x:h_w-h_lt,y:h_h-h_lt};
+	svg.i_b_l = {x:h_w-h_lt,y:h_h+h_lt};
+	svg.i_t_r = {x:h_w+h_lt,y:h_h-h_lt};
+	svg.i_b_r = {x:h_w+h_lt,y:h_h+h_lt};
+
+	svg.t_l_l = svg.t_l;
+	svg.b_l_l = svg.b_l;
+	svg.t_r_l = {x:svg.long_width,y:h_h-h_lt};
+	svg.b_r_l = {x:svg.long_width,y:h_h+h_lt};
+
+	svg.d_1 = {x1:svg.l_t.x,x2:svg.r_t.x,y1:      0,y2:      0+svg.line_thickness,};
+	svg.d_2 = {x1:svg.l_t.x,x2:svg.r_t.x,y1:h_inc*1,y2:h_inc*1+svg.line_thickness,};
+	svg.d_3 = {x1:svg.l_t.x,x2:svg.r_t.x,y1:h_inc*2,y2:h_inc*2+svg.line_thickness,};
+	svg.d_4 = {x1:svg.l_t.x,x2:svg.r_t.x,y1:h_inc*3,y2:h_inc*3+svg.line_thickness,};
+	svg.d_5 = {x1:svg.l_t.x,x2:svg.r_t.x,y1:h_inc*4,y2:h_inc*4+svg.line_thickness,};
+
 	const get_reducer= (f_ext) => {
 		const get_subreducer = (type) => 
 			(acc, cur) => 
@@ -45,7 +107,6 @@
 		material_descriptions = await resolve_to_text(material_desc_urls,".txt");
 		
 		thumbnails = tools.reduce(get_reducer(".png"),[]).join().split(',');
-		console.log(thumbnails);
 		material_thumbnails = materials.reduce((acc,cur) =>[...acc, "./materials/"+cur+".png"],[]);
 		
 		let mapping_keys = [];
@@ -65,7 +126,6 @@
 			};
 		}
 		material_mapping = temp_material_mapping;
-		console.log(material_mapping);
 		let req_urls = tools.reduce(get_reducer(".req"),[]).join().split(',');
 		requirements = await //resolve_to_text(req_urls,".req");
 			Promise.all( 
@@ -109,124 +169,127 @@
 	});
 
 </script>
-<svg width="0" height="0" viewBox="0 0 100 100">
-	<defs>
+<svg width="0" height="0" viewBox="0 0 {svg.height} {svg.width}">
+		<defs>
 		<clipPath id="cross-section">
-			<polygon points="0 40, 40 40, 40 0, 60 0, 60 40, 100 40, 100 60, 60 60, 60 100, 40 100, 40 60,0 60"/>
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.i_t_l.x} {svg.i_t_l.y}, {svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.i_b_r.x} {svg.i_b_r.y}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y}, {svg.i_b_l.x} {svg.i_b_l.y}, {svg.b_l  .x} {svg.b_l  .y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="left-full-vertical">
-			<polygon points="0 40, 40 40, 40 0, 60 0,  60 100, 40 100, 40 60,0 60"/>
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.i_t_l.x} {svg.i_t_l.y}, {svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y}, {svg.i_b_l.x} {svg.i_b_l.y}, {svg.b_l  .x} {svg.b_l  .y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="tee-dot">
-			<polygon points="0 40, 100 40, 100 60, 60 60, 60 100, 40 100, 40 60, 0 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-		</clipPath>  
-	</defs>
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.i_b_r.x} {svg.i_b_r.y}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y}, {svg.i_b_l.x} {svg.i_b_l.y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+		</defs>
 	<defs>
 		<clipPath id="upsidedown-tee-dot">
-			<polygon points="0 40, 40 40, 40 0, 60 0, 60 40, 100 40, 100 60, 0 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
+            
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+			<polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.i_t_l.x} {svg.i_t_l.y}, {svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.b_l  .x} {svg.b_l  .y}," />
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="upsidedown-tee">
-			<polygon points="0 40, 40 40, 40 0, 60 0, 60 40, 100 40, 100 60, 0 60"/>
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.i_t_l.x} {svg.i_t_l.y}, {svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.b_l  .x} {svg.b_l  .y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="tee">
-			<polygon points="0 40, 100 40, 100 60, 60 60, 60 100, 40 100, 40 60, 0 60"/>
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.i_b_r.x} {svg.i_b_r.y}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y}, {svg.i_b_l.x} {svg.i_b_l.y}, {svg.b_l  .x} {svg.b_l  .y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="flat">
-			<polygon points="0 40, 100 40, 100 60, 0 60"/>
+            <polygon points="{svg.t_l_l  .x} {svg.t_l_l  .y}, {svg.t_r_l  .x} {svg.t_r_l  .y}, {svg.b_r_l  .x} {svg.b_r_l  .y}, {svg.b_l_l  .x} {svg.b_l_l  .y},"/>  
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="down">
-			<polygon points="40 0, 60 0, 60 100, 40 100"/>
+            <polygon points="{svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="flat-dot">
-			<polygon points="0 40, 100 40, 100 60, 0 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
+            
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+			<polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.b_l  .x} {svg.b_l  .y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="flat-bottom-angle-dot">
-			<polygon points="0 40, 100 40, 100 60, 0 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-			<polygon points="40 70, 100 70, 100 90, 60 90, 60 100, 40 100"/>
-			<circle cy="80" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-		</clipPath>  
+            <polygon points="{svg.i_t_l.x} {svg.i_t_l.y+svg.offset}, {svg.t_r  .x} {svg.t_r  .y+svg.offset}, {svg.b_r  .x} {svg.b_r  .y+svg.offset}, {svg.i_b_r.x} {svg.i_b_r.y+svg.offset}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y},"/>		
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+            <circle cy="{svg.c_y+svg.offset}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" /></clipPath>  
 	</defs>
-	<defs>
+    <defs>
 		<clipPath id="upsidedown-tee-bottom-angle-dot">
-			<polygon points="0 40, 40 40, 40 0, 60 0, 60 40, 100 40, 100 60, 0 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-			<polygon points="40 70, 100 70, 100 90, 60 90, 60 100, 40 100"/>
-			<circle cy="80" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-		</clipPath>  
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.i_t_l.x} {svg.i_t_l.y}, {svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+            <polygon points="{svg.i_t_l.x} {svg.i_t_l.y+svg.offset}, {svg.t_r  .x} {svg.t_r  .y+svg.offset}, {svg.b_r  .x} {svg.b_r  .y+svg.offset}, {svg.i_b_r.x} {svg.i_b_r.y+svg.offset}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y},"/>
+            
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+            <circle cy="{svg.c_y+svg.offset}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+			</clipPath>  
 	</defs>
-	<defs>
+    <defs>
 		<clipPath id="upsidedown-angle-bottom-flat-dot">
-			<polygon points="40 0, 60 0, 60 10, 100 10, 100 30, 40 30"/>
-			<circle cy="20" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-			<polygon points="0 40, 100 40,100 60, 0 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-		</clipPath>  
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+			<polygon points="{svg.l_t  .x} {svg.l_t  .y},{svg.r_t    .x} {svg.r_t    .y}, {svg.i_t_r  .x} {svg.i_t_r  .y-svg.offset},  {svg.t_r    .x} {svg.t_r    .y-svg.offset}, {svg.b_r    .x} {svg.b_r    .y-svg.offset}, {svg.i_b_l  .x} {svg.i_b_l  .y-svg.offset}, "/>
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+            <circle cy="{svg.c_y-svg.offset}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+			</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="angle-top-right">
-			<polygon points="40 0, 60 0, 60 40, 100 40, 100 60, 40 60"/>
+            <polygon points="{svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.i_b_l.x} {svg.i_b_l.y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="angle-top-right-dot">
-			<polygon points="40 0, 60 0, 60 40, 100 40, 100 60, 40 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
+            
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+			<polygon points="{svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.i_b_l.x} {svg.i_b_l.y},"/>
 		</clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="angle-left-down">
-			<polygon points="0 40,60 40, 60 100, 40 100, 40 60, 0 60"/>
-		</clipPath>  
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y}, {svg.i_b_l.x} {svg.i_b_l.y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+	    </clipPath>  
 	</defs>
 	<defs>
 		<clipPath id="flat-dot-dashed">
-			<polygon points="0 40, 100 40, 100 60, 0 60"/>
-			<polygon points="45 0, 55 0, 55 10, 45 10"/>
-			<polygon points="45 20, 55 20, 55 30, 45 30"/>
-			<polygon points="45 40, 55 40, 55 50, 45 50"/>
-			<polygon points="45 60, 55 60, 55 70, 45 70"/>
-			<polygon points="45 80, 55 80, 55 90, 45 90"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-		</clipPath>  
-	</defs>
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+            <polygon points="{svg.d_1.x2} {svg.d_1.y1}, {svg.d_1.x1} {svg.d_1.y1}, {svg.d_1.x1} {svg.d_1.y2}, {svg.d_1.x2} {svg.d_1.y2}"/>
+            <polygon points="{svg.d_2.x2} {svg.d_2.y1}, {svg.d_2.x1} {svg.d_2.y1}, {svg.d_2.x1} {svg.d_2.y2}, {svg.d_2.x2} {svg.d_2.y2}"/>
+            <polygon points="{svg.d_3.x2} {svg.d_3.y1}, {svg.d_3.x1} {svg.d_3.y1}, {svg.d_3.x1} {svg.d_3.y2}, {svg.d_3.x2} {svg.d_3.y2}"/>
+            <polygon points="{svg.d_4.x2} {svg.d_4.y1}, {svg.d_4.x1} {svg.d_4.y1}, {svg.d_4.x1} {svg.d_4.y2}, {svg.d_4.x2} {svg.d_4.y2}"/>
+            <polygon points="{svg.d_5.x2} {svg.d_5.y1}, {svg.d_5.x1} {svg.d_5.y1}, {svg.d_5.x1} {svg.d_5.y2}, {svg.d_5.x2} {svg.d_5.y2}"/>
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+			</clipPath>  
+	</defs>	        
 	<defs>
 		<clipPath id="upsidedown-tee-bottom-angle-dot-dash-connect-cross-section">
-			<polygon points="70 0, 90 0, 90 10, 100 10, 100 30, 70 30"/>
-			<circle cy="20" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-			<polygon points="0 40, 40 40, 40 0, 60 0, 60 40, 100 40,100 60, 60 60, 60 100, 40 100, 40 60, 0 60"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-		</clipPath>  
+            <polygon points="{svg.l_t  .x+svg.offset} {svg.l_t  .y}, {svg.r_t  .x+svg.offset} {svg.r_t  .y}, {svg.i_t_r.x+svg.offset} {svg.i_t_r.y-svg.offset}, {svg.t_r  .x} {svg.t_r  .y-svg.offset}, {svg.b_r  .x} {svg.b_r  .y-svg.offset}, {svg.i_b_l.x+svg.offset} {svg.i_b_l.y-svg.offset},"/>
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.i_t_l.x} {svg.i_t_l.y}, {svg.l_t  .x} {svg.l_t  .y}, {svg.r_t  .x} {svg.r_t  .y}, {svg.i_t_r.x} {svg.i_t_r.y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.i_b_r.x} {svg.i_b_r.y}, {svg.r_b  .x} {svg.r_b  .y}, {svg.l_b  .x} {svg.l_b  .y}, {svg.i_b_l.x} {svg.i_b_l.y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+            
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+            <circle cy="{svg.c_y-svg.offset}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+			</clipPath>  
 	</defs>
-	<defs>
+    <defs>
 		<clipPath id="tee-dot-offset-dashed">
-			<polygon points="0 40, 100 40, 100 60, 90 60, 90 100, 70 100, 70 60, 0 60"/>
-			<polygon points="45 0, 55 0, 55 10, 45 10"/>
-			<polygon points="45 20, 55 20, 55 30, 45 30"/>
-			<polygon points="45 40, 55 40, 55 50, 45 50"/>
-			<polygon points="45 60, 55 60, 55 70, 45 70"/>
-			<polygon points="45 80, 55 80, 55 90, 45 90"/>
-			<circle cy="50" cx="85" r="15" stroke="black" stroke-width="1" fill="black" />
-		</clipPath>  
+            <polygon points="{svg.t_l  .x} {svg.t_l  .y}, {svg.t_r  .x} {svg.t_r  .y}, {svg.b_r  .x} {svg.b_r  .y}, {svg.i_b_r.x+svg.offset} {svg.i_b_r.y}, {svg.r_b  .x+svg.offset} {svg.r_b  .y}, {svg.l_b  .x+svg.offset} {svg.l_b  .y}, {svg.i_b_l.x+svg.offset} {svg.i_b_l.y}, {svg.b_l  .x} {svg.b_l  .y},"/>
+            <polygon points="{svg.d_1.x2} {svg.d_1.y1}, {svg.d_1.x1} {svg.d_1.y1}, {svg.d_1.x1} {svg.d_1.y2}, {svg.d_1.x2} {svg.d_1.y2}"/>
+            <polygon points="{svg.d_2.x2} {svg.d_2.y1}, {svg.d_2.x1} {svg.d_2.y1}, {svg.d_2.x1} {svg.d_2.y2}, {svg.d_2.x2} {svg.d_2.y2}"/>
+            <polygon points="{svg.d_3.x2} {svg.d_3.y1}, {svg.d_3.x1} {svg.d_3.y1}, {svg.d_3.x1} {svg.d_3.y2}, {svg.d_3.x2} {svg.d_3.y2}"/>
+            <polygon points="{svg.d_4.x2} {svg.d_4.y1}, {svg.d_4.x1} {svg.d_4.y1}, {svg.d_4.x1} {svg.d_4.y2}, {svg.d_4.x2} {svg.d_4.y2}"/>
+            <polygon points="{svg.d_5.x2} {svg.d_5.y1}, {svg.d_5.x1} {svg.d_5.y1}, {svg.d_5.x1} {svg.d_5.y2}, {svg.d_5.x2} {svg.d_5.y2}"/>
+            <circle cy="{svg.c_y}" cx="{svg.c_x}" r="{svg.c_r}" stroke="black" stroke-width="1" fill="black" />
+        </clipPath>  
 	</defs>
 </svg>
 <div class="row material-top">
@@ -262,8 +325,8 @@
 			<div class="tool-cube "></div>
 			<div class="path flat-bottom-angle-dot"></div>
 			<div class="tool-cube "></div>
+			<div class="empty-tool-cube "></div>
 			<div class="empty path"></div>
-			<div class="empty path "></div>
 		</div>
 		<div class="row">
 			<div class="empty path "></div>
@@ -299,7 +362,7 @@
 			<div class="empty path "></div>
 			<div class="path down"></div>
 			<div class="empty path "></div>
-			<div class="empty path"></div>
+			<div class="empty-tool-cube"></div>
 			<div class="empty path "></div>
 			<div class="path angle-top-right-dot"></div>
 			<div class="tool-cube "></div>
@@ -327,7 +390,7 @@
 		</div>
 		<div class="row">
 			<div class="empty path "></div>
-			<div class="empty path"></div>
+			<div class="empty-tool-cube"></div>
 			<div class="empty path "></div>
 			<div class="path down"></div>
 			<div class="empty path "></div>
@@ -342,7 +405,7 @@
 		</div>
 		<div class="row">
 			<div class="empty path "></div>
-			<div class="empty path"></div>
+			<div class="empty-tool-cube"></div>
 			<div class="empty path "></div>
 			<div class="path angle-top-right-dot"></div>
 			<div class="tool-cube "></div>
@@ -357,13 +420,13 @@
 		</div>
 		<div class="row">
 			<div class="empty path "></div>
-			<div class="empty path"></div>
+			<div class="empty-tool-cube"></div>
 			<div class="empty path "></div>
-			<div class="empty path"></div>
+			<div class="empty-tool-cube"></div>
 			<div class="empty path "></div>
-			<div class="empty path"></div>
+			<div class="empty-tool-cube"></div>
 			<div class="empty path "></div>
-			<div class="empty path"></div>
+			<div class="empty-tool-cube"></div>
 			<div class="empty path "></div>
 			<div class="path angle-top-right-dot"></div>
 			<div class="tool-cube "></div>
@@ -599,8 +662,8 @@
 
 	.material-top {
 		min-height : 100px;
-		max-width : 1910px;
-		min-width : 1910px;
+		max-width : 1550px;
+		min-width : 1550px;
 		overflow-x: scroll;
 		overflow-y: hidden;
 		margin: 20px;
@@ -669,11 +732,24 @@
     .empty, .empty.path {
 		background: transparent;
 	}
+	.empty-tool-cube {
+	background: transparent;
+      max-width:40px;
+      min-width:40px;
+	}
+	.empty.path {
+      max-width:100px;
+      min-width:100px;
+	}
+    .path.flat {
+      max-width:100px;
+      min-width:100px;
+	}
     .path {
       min-height:100px;
       max-height:100px;
-      max-width:100px;
-      min-width:100px;
+      max-width:40px;
+      min-width:40px;
       background:black;
 	}
 	.tool-cube img {
@@ -693,13 +769,13 @@
 	 
 	}
 	div.tree {
-		min-width: 1300px;
+		min-width: 940px;
 		min-height: 800px;
-		max-width: 1300px;
+		max-width: 940px;
 		max-height: 800px;
 		border-radius:20px;
 		margin:20px;
-		background-image: repeating-linear-gradient(90deg, rgb(143, 117, 86), rgb(143, 117, 86) 100px,rgb(150, 127, 98) 100px, rgb(150, 127, 98) 200px);
+		background-image: repeating-linear-gradient(90deg, rgb(143, 117, 86), rgb(143, 117, 86) 100px,rgb(150, 127, 98) 100px, rgb(150, 127, 98) 140px);
 	}
     .cross-section {
       clip-path: url(#cross-section);
