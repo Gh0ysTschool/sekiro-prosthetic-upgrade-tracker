@@ -4,12 +4,19 @@
 	let selected_material_index = 0;
 	export let tools;
 	export let materials;
-	export let thumbnails = [];
-	export let descriptions = [];
-	export let requirements = [];
-	export let material_thumbnails = [];
-	export let material_descriptions = [];
-	export let material_mapping;
+	let thumbnails = [];
+	let descriptions = [];
+	let requirements = [];
+	let material_thumbnails = [];
+	let material_descriptions = [];
+	let material_mapping;
+	let svg = {
+		line_thickness : 5,
+		long_height : 100,
+		long_width : 100,
+		height : 100,
+		width : 60,
+	}
 	const get_reducer= (f_ext) => {
 		const get_subreducer = (type) => 
 			(acc, cur) => 
