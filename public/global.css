@@ -12,56 +12,287 @@ body {
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
-
-a {
-	color: rgb(0,100,200);
-	text-decoration: none;
+:root {
+	--tool-bg :rgb(88, 88, 88);
+	--path-bg : black;
+	--thumbnail-size : 80px;
+	--small-path-width :40px;
+	--tool-container-size : 100px;
+	--small-thumbnail-size : 40px;
+	--dark-bg :rgb(150, 127, 98);
+	--light-bg :rgb(143, 117, 86);
+	--description-text-color : white;
+	--description-text-bg : repeating-linear-gradient( tan, tan 2px, grey 2px, grey 3px, rgba(128, 128, 128, 0.5) 3px, rgba(128, 128, 128, 0.5) 19px, grey 19px, grey 20px, tan 20px, tan 22px);
 }
 
-a:hover {
-	text-decoration: underline;
+.tool {
+	margin: 5px;
+	width: 600px;
+	padding: 15px;
+	overflow: hidden;
+	min-height: var(--tool-container-size);
+	border-radius: 5px;
+	flex-direction: row;
+	background-color: tan;
 }
 
-a:visited {
-	color: rgb(0,80,160);
+.tool img, .tool-cube img, .tool-description img, .material-top img, .material img, .material div img, .tool-img {
+	background: var(--tool-bg);
+	border-radius: 15px;
+	margin-right: 15px;
+}
+.material-top img {
+	margin : 10px;
+}
+.tool img, .tool-cube img, .tool-description img, .material-top img {
+	min-height : var(--thumbnail-size);
+	max-width  : var(--thumbnail-size);
+	max-height : var(--thumbnail-size);
+	min-width  : var(--thumbnail-size);
+}
+.material img, .material div img, .tool-img {
+	min-height : var(--small-thumbnail-size);
+	max-width  : var(--small-thumbnail-size);
+	max-height : var(--small-thumbnail-size);
+	min-width  : var(--small-thumbnail-size);
 }
 
-label {
+.tool p, .tool-description p, .material p, .material_side p {
+	margin: 0px;
+	max-width: 480px;
+	text-align: left;
+	padding-left: 5px;
+	margin-right: 15px;
+	padding-right: 5px;
+}
+.material p, .material_side p {
+	font-size: small;
+	border-radius: 5px;
+	border-top-left-radius: 18px;
+	border-bottom-right-radius: 18px;
+	background: rgba(128, 128, 128, 0.5);
+}
+.tool p {
+	background: repeating-linear-gradient( tan, tan 2px, grey 2px, grey 3px, rgba(128, 128, 128, 0.5) 3px, rgba(128, 128, 128, 0.5) 19px, grey 19px, grey 20px, tan 20px, tan 22px);
+}
+.tool-description p {
+	background: repeating-linear-gradient( rgb(150, 127, 98), rgb(150, 127, 98) 2px, grey 2px, grey 3px, rgba(128, 128, 128, 0.5) 3px, rgba(128, 128, 128, 0.5) 19px, grey 19px, grey 20px, rgb(150, 127, 98) 20px, rgb(150, 127, 98) 22px);
+}
+.tool div {
+	margin: 0px;
+	padding: 0px;
+}
+.base-upgrade-column, .tool-description, .material-top, div.tree{
+	margin: 20px;
+}
+.base-upgrade-column, .tool-description, .material, .material_side, .material_side div, .tool, .row, .column {	
+	display: flex;
+}
+.tool-description, .material, .material_side div, .row{
+	flex-direction: row;
+}
+.column, .base-upgrade-column, .material_side {
+	flex-direction: column;
+}
+.base-upgrade-column {
+	max-width: var(--tool-container-size);
+	min-width: var(--tool-container-size);
+	min-height: 800px;
+	max-height: 800px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border-radius: 20px;
+	background: var(--light-bg);;
+}
+
+.tool-description {
+	padding: 15px;
+	max-width: 400px;
+	min-width: 400px;
+	overflow: hidden;
+	min-height: 300px;
+	max-height: 300px;
+	padding-top: 50px;
+	border-radius: 20px;
+	background: linear-gradient(to right, rgb(143, 117, 86), rgb(143, 117, 86) 105px, rgb(150, 127, 98) 105px, rgb(150, 127, 98) 600px);
+}
+
+.tool-description div {
+	margin: 0px;
+	padding: 0px;
+}
+
+.material {
+	min-height: 50px;
+	min-width: 50px;
+	overflow: hidden;
+	margin: 5px;
+	background-color: transparent;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+.material_descriptions {
 	display: block;
 }
 
-input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
+
+.material div {
+	margin: 0px;
+	padding: 0px;
 }
 
-input:disabled {
-	color: #ccc;
+.material-top {
+	min-height: var(--tool-container-size);;
+	max-width: 1550px;
+	min-width: 1550px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	background: var(--light-bg);
+	border-radius: 15px;
 }
 
-input[type="range"] {
-	height: 0;
+
+.material_side {
+	min-height: 50px;
+	min-width: 50px;
+	overflow: hidden;
+	margin: 5px;
+	margin-top: 20px;
+	background: tan;
+	padding: 5px;
+	border-radius: 15px;
 }
 
-button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
+
+.material_side div {
+	margin: 10px;
+	max-height: 50px;
+	overflow: hidden;
+	transition-property: max-height;
+	transition: 0.8s ease-in-out;
 }
 
-button:disabled {
-	color: #999;
+.material_side div:hover {
+	max-height: 150px;
 }
 
-button:not(:disabled):active {
-	background-color: #ddd;
+.empty,
+.empty.path {
+	background: transparent;
 }
 
-button:focus {
-	border-color: #666;
+.empty-tool-cube {
+	background: transparent;
+	max-width: var(--small-path-width);
+	min-width: var(--small-path-width);
+}
+
+.empty.path,
+.path.flat {
+	max-width: var(--tool-container-size);
+	min-width: var(--tool-container-size);
+}
+
+.path {
+	min-height: var(--tool-container-size);
+	max-height: var(--tool-container-size);
+	max-width: var(--small-path-width);
+	min-width: var(--small-path-width);
+	background: black;
+}
+
+.tool-cube {
+	background: var(--tool-bg);
+	margin: 10px;
+	min-height: 80px;
+	max-height: 80px;
+	max-width: 80px;
+	min-width: 80px;
+	border-radius: 15px;
+}
+
+div.tree {
+	min-width: 940px;
+	min-height: 800px;
+	max-width: 940px;
+	max-height: 800px;
+	border-radius: 20px;
+	background-image: repeating-linear-gradient(90deg, rgb(143, 117, 86), rgb(143, 117, 86) 100px, rgb(150, 127, 98) 100px, rgb(150, 127, 98) 140px);
+}
+
+.cross-section {
+	clip-path: url(#cross-section);
+}
+
+.left-full-vertical {
+	clip-path: url(#left-full-vertical);
+}
+
+.tee-dot {
+	clip-path: url(#tee-dot);
+}
+
+.upsidedown-tee-dot {
+	clip-path: url(#upsidedown-tee-dot);
+}
+
+.tee {
+	clip-path: url(#tee);
+}
+
+.upsidedown-tee {
+	clip-path: url(#upsidedown-tee);
+}
+
+.flat {
+	clip-path: url(#flat);
+}
+
+.down {
+	clip-path: url(#down);
+}
+
+.flat-dot {
+	clip-path: url(#flat-dot);
+}
+
+.flat-bottom-angle-dot {
+	clip-path: url(#flat-bottom-angle-dot);
+}
+
+.upsidedown-tee-bottom-angle-dot {
+	clip-path: url(#upsidedown-tee-bottom-angle-dot);
+}
+
+.upsidedown-angle-bottom-flat-dot {
+	clip-path: url(#upsidedown-angle-bottom-flat-dot);
+}
+
+.angle-top-right {
+	clip-path: url(#angle-top-right);
+}
+
+.angle-top-right-dot {
+	clip-path: url(#angle-top-right-dot);
+}
+
+.angle-left-down {
+	clip-path: url(#angle-left-down);
+}
+
+.flat-dot-dashed {
+	clip-path: url(#flat-dot-dashed );
+}
+
+.upsidedown-tee-bottom-angle-dot-dash-connect-cross-section {
+	clip-path: url(#upsidedown-tee-bottom-angle-dot-dash-connect-cross-section);
+}
+
+.tee-dot-offset-dashed {
+	clip-path: url(#tee-dot-offset-dashed );
+}
+
+::-webkit-scrollbar {
+	display: none;
 }

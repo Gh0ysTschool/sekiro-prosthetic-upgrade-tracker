@@ -193,61 +193,8 @@
 			div.classList.add("tool-cube");
 			base_upgrade_column.appendChild(div)
 		}
-		let img_style = document.createElement('style');
-		img_style.type = 'text/css';
-		img_style.innerHTML  
-		='.tool-img { min-height:80px;max-width:80px;max-height:80px;min-width:80px;}'
-		+'.tool { display : flex; flex-direction: row; min-height : 100px; width : 600px; overflow: hidden; margin:5px; background-color: tan; padding: 15px; border-radius: 5px; }'
-		+'.tool img { min-height : 80px; min-width : 80px; max-height : 80px; max-width : 80px; background : grey; border-radius : 5px; margin-right : 15px; }'
-		+'.tool p { padding-left: 5px; padding-right: 5px; text-align: left; max-width: 480px; margin: 0px; margin-right: 15px; background: repeating-linear-gradient( tan, tan 2px, grey 2px, grey 3px, rgba(128, 128, 128, 0.5) 3px, rgba(128, 128, 128, 0.5) 19px, grey 19px, grey 20px, tan 20px, tan 22px); }'
-		+'.tool div { margin: 0px; padding: 0px; } .base-upgrade-column { display : flex; flex-direction: column; min-height : 800px; max-height : 800px; max-width : 100px; min-width : 100px; overflow-y: scroll; overflow-x: hidden; border-radius:20px; margin:20px; background: rgb(143, 117, 86); }'
-		+'.tool-description { display : flex; flex-direction: row; min-height : 300px; max-height : 300px; max-width : 400px; min-width : 400px; overflow: hidden; border-radius:20px; margin:20px; background: linear-gradient(to right, rgb(143, 117, 86), rgb(143, 117, 86) 105px, rgb(150, 127, 98) 105px, rgb(150, 127, 98) 600px ); padding: 15px; padding-top: 50px; }'
-		+'.tool-description img { min-height : 80px; min-width : 80px; max-height : 80px; max-width : 80px; background : grey; border-radius : 5px; margin-right : 15px; }'
-		+'.tool-description p { padding-left: 5px; padding-right: 5px; text-align: left; max-width: 480px; margin: 0px; margin-right: 15px; background: repeating-linear-gradient( rgb(150, 127, 98), rgb(150, 127, 98) 2px, grey 2px, grey 3px, rgba(128, 128, 128, 0.5) 3px, rgba(128, 128, 128, 0.5) 19px, grey 19px, grey 20px, rgb(150, 127, 98) 20px, rgb(150, 127, 98) 22px); }'
-		+'.tool-description div { margin: 0px; padding: 0px; }'
-		+'.material { display : flex; flex-direction: row; min-height : 50px; min-width : 50px; overflow: hidden; margin: 5px; background-color: transparent; padding: 15px; border-radius: 5px; }'
-		+'.material_descriptions { display : block; }'
-		+'.material img { min-height : 40px; min-width : 40px; max-height : 40px; max-width : 40px; background : grey; border-radius : 5px; margin : 5px; }'
-		+'.material p { padding-left: 5px; padding-right: 5px; text-align: left; margin: 0px; font-size: small; border-radius: 5px; border-bottom-right-radius: 18px; border-top-left-radius: 18px; background: rgba(128, 128, 128, 0.5); }'
-		+'.material div { margin: 0px; padding: 0px; }'
-		+'.material-top { min-height : 100px; max-width : 1550px; min-width : 1550px; overflow-x: scroll; overflow-y: hidden; margin: 20px; background: rgb(143, 117, 86); border-radius: 15px; }'
-		+'.material-top img { min-height : 80px; min-width : 80px; max-height : 80px; max-width : 80px; background : grey; border-radius : 15px; margin : 10px; }'
-		+'.material_side { display : flex; flex-direction: column; min-height : 50px; min-width : 50px; overflow: hidden; margin: 5px; margin-top: 20px; background: tan; padding: 5px; border-radius: 15px; }'
-		+'.material_side img { min-height : 40px; min-width : 40px; max-height : 40px; max-width : 40px; background : grey; border-radius : 5px; margin : 5px; }'
-		+'.material_side p { padding-left: 5px; padding-right: 5px; text-align: left; margin: 0px; font-size: small; border-radius: 5px; border-bottom-right-radius: 18px; border-top-left-radius: 18px; background: rgba(128, 128, 128, 0.5); }'
-		+'.material_side div { margin: 10px; max-height : 50px; overflow: hidden; display: flex; flex-direction: row; transition-property: max-height; transition: 0.8s ease-in-out; }'
-		+'.material_side div:hover{ max-height: 150px; }'
-		+'.row { display : flex; flex-direction: row; }'
-		+'.empty, .empty.path { background: transparent; }'
-		+'.empty-tool-cube { background: transparent; max-width:40px; min-width:40px; }'
-		+'.empty.path, .path.flat  { max-width:100px; min-width:100px; }'
-		+'.path { min-height:100px; max-height:100px; max-width:40px; min-width:40px; background:black; }'
-		+'.tool-cube img { min-height:80px; max-width:80px; max-height:80px; min-width:80px; }'
-		+'.tool-cube { background: rgb(88, 88, 88); margin: 10px; min-height:80px; max-height:80px; max-width:80px; min-width:80px; border-radius: 15px; }'
-		+'div.tree { min-width: 940px; min-height: 800px; max-width: 940px; max-height: 800px; border-radius:20px; margin:20px; background-image: repeating-linear-gradient(90deg, rgb(143, 117, 86), rgb(143, 117, 86) 100px,rgb(150, 127, 98) 100px, rgb(150, 127, 98) 140px); }'
-		+'.cross-section { clip-path: url(#cross-section); }'
-		+'.left-full-vertical { clip-path: url(#left-full-vertical); }'
-		+'.tee-dot { clip-path: url(#tee-dot); }'
-		+'.upsidedown-tee-dot { clip-path: url(#upsidedown-tee-dot); }'
-		+'.tee { clip-path: url(#tee); }'
-		+'.upsidedown-tee { clip-path: url(#upsidedown-tee); }'
-		+'.flat { clip-path: url(#flat); }'
-		+'.down { clip-path: url(#down); }'
-		+'.flat-dot { clip-path: url(#flat-dot); }'
-		+'.flat-bottom-angle-dot { clip-path: url(#flat-bottom-angle-dot); }'
-		+'.upsidedown-tee-bottom-angle-dot { clip-path: url(#upsidedown-tee-bottom-angle-dot); }'
-		+'.upsidedown-angle-bottom-flat-dot { clip-path: url(#upsidedown-angle-bottom-flat-dot); }'
-		+'.angle-top-right { clip-path: url(#angle-top-right); }'
-		+'.angle-top-right-dot { clip-path: url(#angle-top-right-dot); }'
-		+'.angle-left-down { clip-path: url(#angle-left-down); }'
-		+'.flat-dot-dashed { clip-path: url(#flat-dot-dashed ); }'
-		+'.upsidedown-tee-bottom-angle-dot-dash-connect-cross-section { clip-path: url(#upsidedown-tee-bottom-angle-dot-dash-connect-cross-section); }'
-		+'.tee-dot-offset-dashed { clip-path: url(#tee-dot-offset-dashed ); }'
-		+'::-webkit-scrollbar { display: none; }';
-		document.body.appendChild(img_style);
-		let tool_indexes = [0,4,7,10,14,18,21,25,31,36,null,26,32,33,34,35,27,28,1 ,19,29,20,30,22,23,24,13,5 ,11,2 ,12,3,8,38,9 ,15,37,16,6 ,39,17];
+		let tool_indexes = [0,4,7,10,14,18,21,25,31,36,40,26,32,33,34,35,27,28,1 ,19,29,20,30,22,23,24,13,5 ,11,2 ,12,3,8,38,9 ,15,37,16,6 ,39,17];
 		document.querySelectorAll(".tool-cube").forEach((el,i)=>{
-			if (i==10) return;
 			let img = document.createElement("img");
 			img.classList.add("tool-img"); 
 			let url = thumbnails [tool_indexes[ i ] ];

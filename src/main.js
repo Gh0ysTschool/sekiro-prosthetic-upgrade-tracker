@@ -16,6 +16,7 @@ const app = new App({
 			{"type":"shuriken","tools":["loaded","spinning","gouging_top","sen_throw","phantom_kunai","lazulite",]},
 			{"type":"spear","tools":["loaded","loaded_thrust","loaded_cleave","spiral","leaping_flame"]},
 			{"type":"umbrella","tools":["loaded","loaded_magnetic","phoenixs_lilac","suzakus_lotus"]},
+			{"type":"arm","tools":["shinobi-prosthetic",]},
 		],
 		materials: [
 			"sen",
