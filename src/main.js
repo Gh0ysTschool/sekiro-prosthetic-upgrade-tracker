@@ -1,10 +1,13 @@
-import App from './App.svelte';
+//import App from './App.svelte';
+import SekiroSkillGrid/*App*/ from './SekiroSkillGrid.svelte';
 
+import {selectedMaterial, selectedTool } from "./store.js";
 
-
-const app = new App({
+const app = new SekiroSkillGrid({//App({
 	target: document.body,
 	props: {
+		selectedMaterial:selectedMaterial, 
+		selectedTool:selectedTool,
 		tools: [
 			{"type":"axe","tools":["loaded","spring_loaded","sparking","lazulite"]},
 			{"type":"divine_abduction","tools":["loaded","double","golden_vortex"]},
