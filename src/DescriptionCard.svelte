@@ -20,6 +20,8 @@
 </div>
 <style>
     .tool-description img {
+        margin: 10px;
+        margin-top:0px;
         background: var(--tool-bg);
         border-radius: 15px;
         margin-right: 15px;
@@ -38,14 +40,14 @@
         background: repeating-linear-gradient( rgb(150, 127, 98), rgb(150, 127, 98) 2px, grey 2px, grey 3px, rgba(128, 128, 128, 0.5) 3px, rgba(128, 128, 128, 0.5) 19px, grey 19px, grey 20px, rgb(150, 127, 98) 20px, rgb(150, 127, 98) 22px);
     }
     .tool-description {
+        padding-top:10px;
         margin: 20px;
-        padding: 15px;
         display: flex;
-        max-width: 910px;
-        min-width: 910px;
+        max-width: 92vw;
+        min-width: 92vw;
         overflow: hidden;
-        min-height: 200px;
-        max-height: 200px;
+        min-height: 220px;
+        max-height: 220px;
         border-radius: 20px;
         flex-direction: row;
         background: linear-gradient(to right, rgb(143, 117, 86), rgb(143, 117, 86) 220px, rgb(150, 127, 98) 220px, rgb(150, 127, 98) 600px); 
@@ -55,7 +57,7 @@
         border-radius: 0px;
         border-top-left-radius: 15px;
         border-bottom-right-radius: 15px;
-        margin-top: 5px;
+        margin: 5px;
         min-height : var(--small-thumbnail-size);
         max-width  : var(--small-thumbnail-size);
         max-height : var(--small-thumbnail-size);

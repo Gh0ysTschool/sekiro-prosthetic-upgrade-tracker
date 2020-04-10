@@ -38,12 +38,13 @@
     function getPaths(){
         return hydratePathIndexArray(getPathsByClass(),getPathDefinitions(getSvgInfo()));}
     function getSvgInfo(){
+        let vh = window.innerHeight,vw = window.innerWidth;
         let svg = {
                 line_thickness : 5,
-                long_height : 100,
-                long_width : 100,
-                height : 100,
-                width : 40,
+                long_height : vw*.10,//100,
+                long_width : vw*.10,//100,
+                height : vw*.10,//100,
+                width : vw*.04,//40,
             }, 
             h_h = svg.height/2,
             h_w = svg.width/2,
@@ -165,6 +166,7 @@
             imgClass:'tool-cube',
             pathClass:'path', 
         };
+    //BIG MESS RIGHT HERE
     let materialMapping = [];
     let descBarParams = getDescBarParams();
     async function getDescBarParams(){
@@ -181,7 +183,7 @@
         let temp = [];
         for (let i in m){
             for (let j in m[i]){
-                if (!temp.includes(m[i][j])) temp.push(m[i][j]);
+                if (!temp.includes(m[i][j])) {temp.push(m[i][j]);}
             }
         }
         materialMapping = temp;// m.reduce((acc,cur)=>{cur.reduce((a,c)=>{if(!acc.includes(c)) acc.push(c);});return acc;},[])
@@ -207,7 +209,7 @@
 <div class="tree">
     <GridWithSVGPaths {...gridParams}/>
 </div>
-<div class="row material-top" style="max-width:940px;min-width:940px;">
+<div class="row material-top" >
     {#each materialMapping as url}
         <img src={url} alt="">
     {/each}

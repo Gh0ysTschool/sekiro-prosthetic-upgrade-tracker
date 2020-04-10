@@ -16,9 +16,10 @@ body {
 :root {
 	--tool-bg :rgb(88, 88, 88);
 	--path-bg : black;
-	--thumbnail-size : 80px;
-	--small-path-width :40px;
-	--tool-container-size : 100px;
+	--thumbnail-size : 8.7vw;
+	--small-path-width :4vw;
+	--thumbnail-margin :0.5vw;
+	--tool-container-size : 9.7vw;
 	--small-thumbnail-size : 40px;
 	--large-thumbnail-size : 200px;
 	--dark-bg :rgb(150, 127, 98);
@@ -107,18 +108,6 @@ body {
 	background: var(--light-bg);;
 }
 
-.tool-description {
-	padding: 15px;
-	max-width: 400px;
-	min-width: 400px;
-	overflow: hidden;
-	min-height: 300px;
-	max-height: 300px;
-	padding-top: 50px;
-	border-radius: 20px;
-	background: linear-gradient(to right, rgb(143, 117, 86), rgb(143, 117, 86) 105px, rgb(150, 127, 98) 105px, rgb(150, 127, 98) 600px);
-}
-
 .tool-description div {
 	margin: 0px;
 	padding: 0px;
@@ -146,8 +135,8 @@ body {
 
 .material-top {
 	min-height: var(--tool-container-size);;
-	max-width: 1550px;
-	min-width: 1550px;
+	max-width: 92vw;
+	min-width: 92vw;
 	overflow-x: scroll;
 	overflow-y: hidden;
 	background: var(--light-bg);
@@ -206,21 +195,19 @@ body {
 
 .tool-cube {
 	background: var(--tool-bg);
-	margin: 10px;
-	min-height: 80px;
-	max-height: 80px;
-	max-width: 80px;
-	min-width: 80px;
+	margin: var(--thumbnail-margin);
+	min-height: var(--thumbnail-size);
+	max-height: var(--thumbnail-size);
+	max-width: var(--thumbnail-size);
+	min-width: var(--thumbnail-size);
 	border-radius: 15px;
 }
 
 div.tree {
-	min-width: 940px;
-	min-height: 800px;
-	max-width: 940px;
-	max-height: 800px;
+	min-width: 92vw;
+	max-width: 92vw;
 	border-radius: 20px;
-	background-image: repeating-linear-gradient(90deg, rgb(143, 117, 86), rgb(143, 117, 86) 100px, rgb(150, 127, 98) 100px, rgb(150, 127, 98) 140px);
+	background-image: repeating-linear-gradient(90deg, rgb(143, 117, 86), rgb(143, 117, 86) var(--tool-container-size), rgb(150, 127, 98) var(--tool-container-size), rgb(150, 127, 98) calc(var(--tool-container-size) + var(--small-path-width)));
 }
 
 ::-webkit-scrollbar {
