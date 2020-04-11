@@ -53,7 +53,7 @@
         flex-direction: row;
         background: linear-gradient(to right, rgb(143, 117, 86), rgb(143, 117, 86) 220px, rgb(150, 127, 98) 220px, rgb(150, 127, 98) 600px); 
     }
-    .tool-desvription div {
+    .tool-description div {
         overflow-y: scroll;
     }
     .material img {
