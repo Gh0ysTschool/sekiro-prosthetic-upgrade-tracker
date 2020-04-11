@@ -42,6 +42,7 @@
     .tool-description {
         padding-top:10px;
         margin: 20px;
+        margin-top: 10px;
         display: flex;
         max-width: 92vw;
         min-width: 92vw;
@@ -51,6 +52,9 @@
         border-radius: 20px;
         flex-direction: row;
         background: linear-gradient(to right, rgb(143, 117, 86), rgb(143, 117, 86) 220px, rgb(150, 127, 98) 220px, rgb(150, 127, 98) 600px); 
+    }
+    .tool-desvription div {
+        overflow-y: scroll;
     }
     .material img {
         background: grey;
