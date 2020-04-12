@@ -41,8 +41,7 @@
     }
     .tool-description {
         padding-top:10px;
-        margin: 20px;
-        margin-top: 10px;
+        margin-top: 15px;
         display: flex;
         max-width: 92vw;
         min-width: 92vw;

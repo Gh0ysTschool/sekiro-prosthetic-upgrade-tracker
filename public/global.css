@@ -86,7 +86,7 @@ body {
 	padding: 0px;
 }
 .base-upgrade-column, .tool-description, .material-top, div.tree{
-	margin: 20px;
+	margin-top: 15px;
 }
 .base-upgrade-column, .tool-description, .material, .material_side, .material_side div, .tool, .row, .column {	
 	display: flex;
